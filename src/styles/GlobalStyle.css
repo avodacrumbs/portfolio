@@ -43,6 +43,11 @@
 }
 
 
+  .nav-links ul li a:hover {
+  color: #00ffff; 
+  background-color: rgba(255, 255, 255, 0.1); 
+  border-radius: 5px; 
+}
 .home-section {
   min-height: 100vh;
   display: flex;
@@ -332,7 +337,7 @@
     display: none;
     position: absolute;
     top: 60px;
-    right: 0;
+    left: 0;
     background-color: white;
     width: 100%;
     padding: 1rem 0;
@@ -345,8 +350,15 @@
 
   .nav-links ul {
     flex-direction: column;
-    align-items: center;
     gap: 1rem;
+   
+  }
+  .nav-links ul li {
+    text-align: center;
+    margin-right: 25%;
+  }
+  .nav-links ul li a {
+    font-size: 1.2rem;
   }
   .Header img {
     height: 40px;
@@ -402,11 +414,11 @@
   .about-buttons {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: space-between;
   }
   .about-buttons a{
     font-size: small;
-    padding: 8px 16px; 
+    padding: 12px 10px; 
    
     
   }
