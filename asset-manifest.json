@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.dd124a63.css",
-    "main.js": "/portfolio/static/js/main.74ca6fdb.js",
+    "main.css": "/portfolio/static/css/main.33a4a89f.css",
+    "main.js": "/portfolio/static/js/main.042f3e80.js",
     "static/js/453.ad7768ec.chunk.js": "/portfolio/static/js/453.ad7768ec.chunk.js",
     "static/media/brgy4.png": "/portfolio/static/media/brgy4.99686832fe7bc1bd5a6f.png",
+    "static/media/D2.png": "/portfolio/static/media/D2.04d14b8c5af3924d3a12.png",
     "static/media/loryn.jpg": "/portfolio/static/media/loryn.c24c69d5cbe908a3fe4b.jpg",
+    "static/media/D1.png": "/portfolio/static/media/D1.f8b893d144b07a025ee8.png",
     "static/media/brgy6.png": "/portfolio/static/media/brgy6.db5e82205a50b9d809f6.png",
     "static/media/brgy3.png": "/portfolio/static/media/brgy3.e6c4769ba7b3bdee51e9.png",
     "static/media/X8.png": "/portfolio/static/media/X8.eb9ee8e71d189d8aa424.png",
@@ -25,12 +27,12 @@
     "static/media/brgy2.png": "/portfolio/static/media/brgy2.d99ab9e35276e49d8b68.png",
     "static/media/Signup.png": "/portfolio/static/media/Signup.25aba1dad67edf2b09a0.png",
     "index.html": "/portfolio/index.html",
-    "main.dd124a63.css.map": "/portfolio/static/css/main.dd124a63.css.map",
-    "main.74ca6fdb.js.map": "/portfolio/static/js/main.74ca6fdb.js.map",
+    "main.33a4a89f.css.map": "/portfolio/static/css/main.33a4a89f.css.map",
+    "main.042f3e80.js.map": "/portfolio/static/js/main.042f3e80.js.map",
     "453.ad7768ec.chunk.js.map": "/portfolio/static/js/453.ad7768ec.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd124a63.css",
-    "static/js/main.74ca6fdb.js"
+    "static/css/main.33a4a89f.css",
+    "static/js/main.042f3e80.js"
   ]
 }
