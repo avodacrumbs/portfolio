@@ -1,22 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/GlobalStyle.css';
+import { allImages } from '../assets/images';
+import Lightbox from 'yet-another-react-lightbox';
+import "yet-another-react-lightbox/styles.css";
 
-import xpensea from '../images/Login.png';
-import xpensea2 from '../images/Signup.png';
-import xpense3 from '../images/category.png';
-import xpense4 from '../images/xpense.png';
-import xpense5 from '../images/xpensesum.png';
-import xpense6 from '../images/reports.png';
-import brgy1 from '../images/brgy1.png';
-import brgy2 from '../images/brgy2.png';
-import brgy3 from '../images/brgy3.png';
-import brgy4 from '../images/brgy4.png';
-import brgy5 from '../images/brgy5.png';
-import brgy6 from '../images/brgy6.png';
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('systems');
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImages, setSelectedImages] = useState(null);
   const scrollRefs = useRef([]);
 
   useEffect(() => {
@@ -44,21 +37,37 @@ const Portfolio = () => {
       description:
         'A simple yet efficient web application designed to help users monitor and manage their daily expenses...',
       skills: 'C#, ASP.NET Core, Entity Framework, SQL Server, JavaScript, Bootstrap',
-      images: [xpensea, xpensea2, xpense3, xpense4, xpense5, xpense6],
+      type: 'Web Application',
+      experience: 'Training Project',
+      role: 'Tester and Programmer',
+      company: 'Alliance Software Inc.',
+      companyLink: 'https://alliance.com.ph/',
+      images: allImages.xpense,
     },
     {
       title: 'Barangay Resident Management System',
       description:
         'The Barangay Computerized Management System is a role-based web application designed for Admin, Staff, and User access...',
       skills: 'PHP, MySQL, React, HTML, CSS, JavaScript',
-      images: [brgy1, brgy2, brgy3, brgy4, brgy5, brgy6],
+      type: 'Web Application',
+      experience: 'Capstone Project',
+      role: 'Project Manager and Full Stack Developer',
+      company: 'University of Cebu Pardo - Talisay',
+      companyLink: 'https://www.uc.edu.ph/',
+      images: allImages.brgy,
     },
     {
-      title: 'Xterium Mobile',
+      title: 'Xterium Mobile and Xode.App',
       description:
-        'Xterium Mobile is a responsive mobile app project where I contributed to the frontend UI and logic...',
+        'Xterium Mobile is a responsive mobile app project where I contributed to the frontend UI and logic along with the Xode.App',
       skills: 'React Native, JavaScript, CSS, UI Design',
-      images: [xpensea2, xpense3, xpense6, xpense5],
+      type: 'Web and Mobile Application',
+      experience: 'Internship',
+      role: 'Software Developer',
+      company: 'RAK SON OPC',
+      xteriumLink: 'https://xterium.app/',
+      xodeLink: 'https://xode.app/',
+      images:allImages.xterium,
     },
   ];
 
@@ -68,14 +77,14 @@ const Portfolio = () => {
       description:
         'A clean and modern Figma design for a mobile banking application...',
       skills: 'Figma, UX Research, Prototyping',
-      images: [xpensea, xpensea2, xpense3, xpense4],
+      images: allImages.xpense,
     },
     {
       title: 'E-Learning Dashboard',
       description:
         'An interactive dashboard UI designed for e-learning platforms...',
       skills: 'Figma, UI Design',
-      images: [xpense5, xpense6, xpensea],
+      images: allImages.xpense,
     },
   ];
 
@@ -114,25 +123,76 @@ const Portfolio = () => {
               <div
                 className="portfolio-thumbnails-scroll"
                 ref={(el) => (scrollRefs.current[index] = el)}
+                onClick={(e) => {
+                  e.stopPropagation(); 
+                  setSelectedImages(
+                    project.images.map((src) => ({ src })) 
+                  );
+                  setLightboxOpen(true);
+                }}
               >
-                {[...project.images, ...project.images].map((imgSrc, i) => (
-                  <a key={i} href={imgSrc} target="_blank" rel="noopener noreferrer">
-                    <img src={imgSrc} alt={`${project.title} ${i + 1}`} />
-                  </a>
-                ))}
+                {project.images.map((imgSrc, i) => (
+  <img
+    key={i}
+    src={imgSrc}
+    alt={`${project.title} ${i + 1}`}
+    onClick={(e) => {
+      e.stopPropagation(); // prevent card expansion
+      setSelectedImages(project.images.map((src) => ({ src })));
+      setLightboxOpen(true);
+    }}
+    style={{ cursor: 'pointer' }}
+  />
+))}
+
               </div>
               <h3>{project.title}</h3>
-
-              {/* Expandable content */}
-              {expandedIndex === index && (
+              {expandedIndex === index ? (
                 <>
                   <p>{project.description}</p>
                   <p><strong>Skills Used:</strong> {project.skills}</p>
+                  <p><strong>Type:</strong> {project.type}</p>
+                  <p><strong>Experience:</strong> {project.experience}</p>
+                  <p><strong>Role:</strong> {project.role}</p>
+                  {project.company && (
+                    <p>
+                      <strong>Company:</strong>{' '}
+                      <a href={project.companyLink} target="_blank" rel="noopener noreferrer">
+                        {project.company}
+                      </a>
+                    </p>
+                  )}
+                  {project.xteriumLink && (
+                    <p>
+                      <strong>Xterium Link:</strong>{' '}
+                      <a href={project.xteriumLink} target="_blank" rel="noopener noreferrer">
+                        {project.xteriumLink}
+                      </a>
+                    </p>
+                  )}
+                  {project.xodeLink && (
+                    <p>
+                      <strong>Xode Link:</strong>{' '}
+                      <a href={project.xodeLink} target="_blank" rel="noopener noreferrer">
+                        {project.xodeLink}
+                      </a>
+                    </p>
+                  )}
+                  <p className='more-toggle'>Show Less</p>
                 </>
+              ): (
+                <p className='more-toggle'>Show More</p>
               )}
             </div>
           ));
         })()}
+        {lightboxOpen && (
+  <Lightbox
+    open={lightboxOpen}
+    close={() => setLightboxOpen(false)}
+    slides={selectedImages}
+  />
+)}
       </div>
     </section>
   );
